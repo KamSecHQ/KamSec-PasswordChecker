@@ -14,7 +14,7 @@ st.write(
     "**Not:** Gerçek hesaplarında kullandığın şifreleri yazma, sadece test için kullan."
 )
 
-# ---------------------- Analiz Fonksiyonları ---------------------- #
+
 
 def password_strength(password: str):
     length = len(password)
@@ -37,10 +37,10 @@ def password_strength(password: str):
     if pool == 0 or length == 0:
         return 0, 0.0, pool, "Geçersiz şifre", "–"
 
-    # Entropi (bit)
+    
     entropy = length * math.log2(pool)
 
-    # 1 milyar tahmin/sn brute force varsayımı
+    
     guesses_per_sec = 1_000_000_000
     seconds = (2 ** (entropy - 1)) / guesses_per_sec
     crack_time_str = format_time(seconds)
@@ -81,11 +81,11 @@ def format_time(seconds: float) -> str:
     else:
         return f"{seconds / year:.2e} yıl"
 
-# ---------------------- Arayüz: Sekmeler ---------------------- #
+
 
 tab1, tab2 = st.tabs(["🔍 Güvenlik Analizi", "🧨 Brute Force Demo"])
 
-# ---- TAB 1: Güvenlik Analizi ---- #
+
 with tab1:
     password = st.text_input(
         "Test etmek istediğin şifre:",
@@ -134,7 +134,7 @@ with tab1:
                     "- Şifren oldukça iyi görünüyor. Yine de farklı servislerde aynı şifreyi kullanmamaya dikkat et."
                 )
 
-# ---- TAB 2: Brute Force Demo ---- #
+
 with tab2:
     st.write(
         "Bu sekme **demo amaçlı** gerçek brute force saldırısını simüle eder.\n"
